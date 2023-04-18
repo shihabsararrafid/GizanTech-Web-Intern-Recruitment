@@ -1,6 +1,8 @@
 ## Instruction
 1. Fork this repository to your GitHub account and start the development.
-2. Submit your repository link here: [Google Form: Submission Link] (https://forms.google.com/)
+2. Submit your repository link here: 
+[Google Form: Submission Link] (https://forms.google.com/)
+
 **Please use a separate branch for each of the below task.**
 
 [API Reference] (https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/)
