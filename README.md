@@ -1,11 +1,11 @@
 ## Instruction
 1. Fork this repository to your GitHub account and start the development.
 2. Submit your repository link here: 
-[Google Form: Submission Link] (https://forms.google.com/)
+[Google Form: Submission Link](https://forms.google.com/)
 
 **Please use a separate branch for each of the below task.**
 
-[API Reference] (https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/)
+[API Reference](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/)
 
 ### Task 1 (50pts)
 1. Create a server with NodeJS/PHP to clone the above API. All the API data is located in `exercise.json` file under `files` folder.
