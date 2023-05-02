@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.set("view engine", "ejs");
 app.use("/api/v1", exerciseRoute);
 
 app.get("/", (re1, res) => {
