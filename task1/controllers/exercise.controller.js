@@ -49,10 +49,18 @@ module.exports.getExerciseByBodyPart = async (req, res, next) => {
       }, 1000);
       setTimeout(() => {
         //  rendering ejs file as a response from view folder
-        res.status(200).render("pages/exercises", {
-          data: exercises,
-          title: `All Exercises for ${bodyPart}`,
-        });
+        if (exercises.length !== 0)
+          res.status(200).render("pages/exercises", {
+            data: exercises,
+            title: `All Exercises for ${bodyPart}`,
+          });
+        else
+          res
+            .status(400)
+            .json({
+              status: "failed",
+              message: "No such bodypart exists in db",
+            });
         // res.send(exercises);
       }, 1500);
     })
@@ -82,10 +90,15 @@ module.exports.getExerciseById = async (req, res, next) => {
       }, 1000);
       setTimeout(() => {
         //  rendering ejs file as a response from view folder
-        res.status(200).render("pages/exercises", {
-          data: exercises,
-          title: ` Exercise for id ${id}`,
-        });
+        if (exercises.length !== 0)
+          res.status(200).render("pages/exercises", {
+            data: exercises,
+            title: ` Exercise for id ${id}`,
+          });
+        else
+          res
+            .status(400)
+            .json({ status: "failed", message: "No such id exists in db" });
         // res.send(exercises);
       }, 1500);
     })
@@ -115,10 +128,15 @@ module.exports.getExerciseByName = async (req, res, next) => {
       }, 1000);
       setTimeout(() => {
         //  rendering ejs file as a response from view folder
-        res.status(200).render("pages/exercises", {
-          data: exercises,
-          title: ` Exercise for name ${name}`,
-        });
+        if (exercises.length !== 0)
+          res.status(200).render("pages/exercises", {
+            data: exercises,
+            title: ` Exercise for name ${name}`,
+          });
+        else
+          res
+            .status(400)
+            .json({ status: "failed", message: "No such name exists in db" });
         // res.send(exercises);
       }, 1500);
     })
