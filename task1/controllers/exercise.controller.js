@@ -98,3 +98,36 @@ module.exports.getExerciseById = async (req, res, next) => {
       console.log(error.message);
     });
 };
+
+module.exports.getExerciseByName = async (req, res, next) => {
+  loadData()
+    .then((val) => {
+      const { name } = req.params;
+      const parsedData = JSON.parse(val);
+      let exercises = [];
+      // res.send(bodyPart);
+      setTimeout(() => {
+        parsedData.forEach((element) => {
+          if (element.name === name) {
+            exercises.push(element);
+          }
+        });
+      }, 1000);
+      setTimeout(() => {
+        //  rendering ejs file as a response from view folder
+        res.status(200).render("pages/exercises", {
+          data: exercises,
+          title: ` Exercise for name ${name}`,
+        });
+        // res.send(exercises);
+      }, 1500);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: "Fail",
+        message: "Failed to load data from db",
+        error: error.message,
+      });
+      console.log(error.message);
+    });
+};

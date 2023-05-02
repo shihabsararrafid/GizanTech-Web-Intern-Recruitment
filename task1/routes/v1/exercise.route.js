@@ -35,7 +35,7 @@ exerciseRoute
    * @apiParam
    * @apiParam
    *
-   * @apiSuccess {Object[]} all the users.
+   * @apiSuccess {Object[]} all the exercises which are done on the requested bodyPart.
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated users can access the data
    * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
@@ -43,6 +43,24 @@ exerciseRoute
 
 exerciseRoute
   .route("/getById/:id")
+  /**
+   * @api {get}
+   * @apiDescription Get specific exercise according to an Id
+   * @apiPermission admin
+   *
+   * @apiHeader {String} Authorization   User's access token
+   *
+   * @apiParam  {Number{1-}}         [page=1]     List page
+   * @apiParam  {Number{1-100}}      [limit=10]  Users per page
+   *
+   * @apiSuccess {Object[]} specific exercise
+   *
+   * @apiError (Unauthorized 401)  Unauthorized  Only authenticated users can access the data
+   * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
+   */
+  .get(exerciseController.getExerciseById);
+exerciseRoute
+  .route("/getByName/:name")
   /**
    * @api {get}
    * @apiDescription Get all the users from the database
@@ -58,6 +76,6 @@ exerciseRoute
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated users can access the data
    * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
    */
-  .get(exerciseController.getExerciseById);
+  .get(exerciseController.getExerciseByName);
 
 module.exports = exerciseRoute;
