@@ -5,6 +5,7 @@ module.exports.getBodyParts = async (req, res, next) => {
   //calling the loadData middleware to load all the data
   loadData()
     .then((value) => {
+      const url = "http://localhost:3001/api/v1/getExerciseByBodyPart";
       const parsedData = JSON.parse(value);
       let bodyParts = [];
       // getting the unique bodyParts
@@ -19,6 +20,7 @@ module.exports.getBodyParts = async (req, res, next) => {
         // rendering ejs file as a response from view folder
         res.status(200).render("pages/bodypart", {
           data: bodyParts,
+          url: url,
           title: "All Bodyparts",
         });
       }, 1500);
@@ -55,12 +57,10 @@ module.exports.getExerciseByBodyPart = async (req, res, next) => {
             title: `All Exercises for ${bodyPart}`,
           });
         else
-          res
-            .status(400)
-            .json({
-              status: "failed",
-              message: "No such bodypart exists in db",
-            });
+          res.status(400).json({
+            status: "failed",
+            message: "No such bodypart exists in db",
+          });
         // res.send(exercises);
       }, 1500);
     })
@@ -138,6 +138,39 @@ module.exports.getExerciseByName = async (req, res, next) => {
             .status(400)
             .json({ status: "failed", message: "No such name exists in db" });
         // res.send(exercises);
+      }, 1500);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: "Fail",
+        message: "Failed to load data from db",
+        error: error.message,
+      });
+      console.log(error.message);
+    });
+};
+
+module.exports.getTargetMuscles = async (req, res, next) => {
+  loadData()
+    .then((value) => {
+      const parsedData = JSON.parse(value);
+      let targets = [];
+      const url = "http://localhost:3001/api/v1/getByTargets";
+      // getting the unique bodyParts
+      setTimeout(() => {
+        parsedData.forEach((element) => {
+          if (targets.indexOf(element.target) === -1) {
+            targets.push(element.target);
+          }
+        });
+      }, 1000);
+      setTimeout(() => {
+        // rendering ejs file as a response from view folder
+        res.status(200).render("pages/bodypart", {
+          data: targets,
+          url: url,
+          title: "All targets",
+        });
       }, 1500);
     })
     .catch((error) => {

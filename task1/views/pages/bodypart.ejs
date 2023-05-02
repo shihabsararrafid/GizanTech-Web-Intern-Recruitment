@@ -12,7 +12,7 @@
   <h1 class="text-3xl mt-[5px] font-semibold">Here is all the list of Bodyparts : </h1>
   <div class="grid grid-cols-4 gap-2">
     <%data.forEach((ex)=>{%>
-      <a href="http://localhost:3001/api/v1/getExerciseByBodyPart/<%=ex%>">
+      <a href="<%=url%>/<%=ex%>">
         <div class="shadow-lg h-[80px] hover:bg-[black] hover:text-[white] duration-300 cursor-pointer boder-black flex justify-center items-center border-[2px]">
           <div class="card" >
             <div class="card-body ">
