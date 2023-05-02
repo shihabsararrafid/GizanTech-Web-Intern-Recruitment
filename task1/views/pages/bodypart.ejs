@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title><%=title%></title>
   <%- include('../parts/head'); %>
 </head>
 <body class="container">
-
+ 
 
 
 <main>
-  <div class="jumbotron">
-    <h1>This is great</h1>
-    <p>Welcome to templating using EJS</p>
+  <div class="row gap-2">
+
+    <%data.forEach((ex)=>{%>
+      <div class="col-3 mx-2">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%=ex.bodyPart%></h5>
+           
+          </div>
+        </div>
+      </div>
+   <% });%>
+   
+    
   </div>
+  
 </main>
 
 <footer>
