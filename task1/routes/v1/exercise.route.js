@@ -4,7 +4,7 @@ const { getBodyParts } = require("../../controllers/exercise.controller");
 const exerciseRoute = express.Router();
 
 exerciseRoute
-  .route("/getByBodyPart")
+  .route("/getBodyParts")
   /**
    * @api {get}
    * @apiDescription Get all the bodyParts from the database

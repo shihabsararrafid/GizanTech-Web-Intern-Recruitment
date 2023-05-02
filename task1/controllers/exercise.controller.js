@@ -17,6 +17,29 @@ module.exports.getBodyParts = async (req, res, next) => {
   loadUser()
     .then((value) => {
       const parsedData = JSON.parse(value);
+      let bodyParts = [];
+      setTimeout(() => {
+        // for (exercise in parsedData) {
+        //   if (bodyParts.indexOf(exercise.bodyPart) === -1) {
+        //     console.log(exercise.bodyPart);
+        //     console.log("he");
+        //     bodyParts.push(exercise.bodyPart);
+        //   }
+        // }
+        parsedData.forEach((element) => {
+          if (bodyParts.indexOf(element.bodyPart) === -1) {
+            //console.log(element.bodyPart);
+            bodyParts.push(element.bodyPart);
+          }
+        });
+        // console.log("hi");
+      }, 1000);
+      setTimeout(() => {
+        res.status(200).render("pages/bodypart", {
+          data: bodyParts,
+          title: "All Bodyparts",
+        });
+      }, 1500);
 
       //  const bodyparts = parsedData.map((exercies) => exercies.bodyPart);
       // res.status(200).json({
@@ -24,9 +47,6 @@ module.exports.getBodyParts = async (req, res, next) => {
       //   message: "Data Loaded Successfully",
       //   bodyparts: bodyParts,
       // });
-      res
-        .status(200)
-        .render("pages/bodypart", { data: parsedData, title: "All Bodyparts" });
     })
     .catch((error) => {
       res.status(400).json({

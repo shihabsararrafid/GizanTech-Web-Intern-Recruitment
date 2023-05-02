@@ -9,12 +9,7 @@ module.exports.loadbodyParts = async (arr) => {
           resolve("foo");
         }, 300);
       });
-      let bodyParts = [];
-      for (exercise in parsedData) {
-        if (bodyParts.indexOf(exercise.bodyPart) === -1) {
-          bodyParts.push(exercise.bodyPart);
-        }
-      }
+
       return bodyParts;
     })
     .catch((err) => {
