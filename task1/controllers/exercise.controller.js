@@ -243,3 +243,37 @@ module.exports.getAllExercises = async (req, res, next) => {
       console.log(error.message);
     });
 };
+
+module.exports.getEquipments = async (req, res, next) => {
+  loadData()
+    .then((value) => {
+      const parsedData = JSON.parse(value);
+      let equipments = [];
+      const url = "http://localhost:3001/api/v1/getByEquipment";
+      // getting the unique bodyParts
+      setTimeout(() => {
+        parsedData.forEach((element) => {
+          if (equipments.indexOf(element.equipment) === -1) {
+            equipments.push(element.equipment);
+          }
+        });
+      }, 1000);
+      setTimeout(() => {
+        // rendering ejs file as a response from view folder
+        res.status(200).render("pages/bodypart", {
+          data: equipments,
+          url: url,
+          name: "Equipments",
+          title: "All Equipments",
+        });
+      }, 1500);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: "Fail",
+        message: "Failed to load data from db",
+        error: error.message,
+      });
+      console.log(error.message);
+    });
+};
