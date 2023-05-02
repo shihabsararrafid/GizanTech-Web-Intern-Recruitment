@@ -15,9 +15,9 @@
         <div class="shadow-lg   cursor-pointer boder-black flex justify-center items-center border-[2px]" >
             <img  src="<%= ex.gifUrl %>"` class="w-[70%] h-[200px] object-cover" alt="...">
             <div class="card-body">
-              <h5 class="card-title font-bold text-xl"><%=ex.name%></h5>
-              <p class="card-text">Targeted Part : <%=ex.target%></p>
-              <p>Equipment : <%=ex.equipment%></p>
+              <h5 class="card-title font-bold text-xl"><a class="underline" href="http://localhost:3001/api/v1/getByName/<%=ex.name%>"><%=ex.name%></a></h5>
+              <p class="card-text">Targeted Part : <a class="underline" href="http://localhost:3001/api/v1/getByTarget/<%=ex.target%>"><%=ex.target%></a></p>
+              <p>Equipment : <a class="underline" href="http://localhost:3001/api/v1/getByEquipment/<%=ex.equipment%>"> <%=ex.equipment%></a></p>
              
             </div>
           </div>

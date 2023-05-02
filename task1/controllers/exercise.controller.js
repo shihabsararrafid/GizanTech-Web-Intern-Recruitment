@@ -297,7 +297,7 @@ module.exports.getExerciseByEquipment = async (req, res, next) => {
         if (exercises.length !== 0)
           res.status(200).render("pages/exercises", {
             data: exercises,
-            title: ` Exercise for targetPart ${equipment}`,
+            title: ` Exercise for equipment ${equipment}`,
           });
         else
           res.status(400).json({
