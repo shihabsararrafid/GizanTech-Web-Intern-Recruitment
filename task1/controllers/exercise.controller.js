@@ -222,3 +222,24 @@ module.exports.getExerciseByTarget = async (req, res, next) => {
       console.log(error.message);
     });
 };
+
+module.exports.getAllExercises = async (req, res, next) => {
+  loadData()
+    .then((val) => {
+      const parsedData = JSON.parse(val);
+      let exercises = [];
+      // res.send(bodyPart);
+      res.status(200).render("pages/exercises", {
+        data: parsedData,
+        title: ` All Exercises`,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: "Fail",
+        message: "Failed to load data from db",
+        error: error.message,
+      });
+      console.log(error.message);
+    });
+};
