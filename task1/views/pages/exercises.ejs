@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%=title%></title>
+  <%- include('../parts/head'); %>
+</head>
+<body class="container">
+ 
+
+
+<main class="px-[20px]">
+  <h1 class="text-3xl mt-[5px] font-semibold">Here is all the list of Required Exercises  : </h1>
+  <div class="grid grid-cols-2 gap-2">
+    <%data.forEach((ex)=>{%>
+        <div class="shadow-lg  hover:bg-[black] hover:text-[white] duration-300 cursor-pointer boder-black flex justify-center items-center border-[2px]" >
+            <img  src="<%= ex.gifUrl %>"` class="w-[70%] h-[200px] object-cover" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=ex.name%></h5>
+              <p class="card-text">Targeted Part : <%=ex.target%></p>
+              <p>Equipment : <%=ex.equipment%></p>
+              <a href="#" class="btn btn-primary">Click</a>
+            </div>
+          </div>
+   <% });%>
+   
+    
+  </div>
+  
+</main>
+
+<footer>
+  <%- include('../parts/footer'); %>
+</footer>
+
+</body>
+</html>
