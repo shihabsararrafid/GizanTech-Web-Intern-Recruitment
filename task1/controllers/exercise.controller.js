@@ -209,7 +209,7 @@ module.exports.getExerciseByTarget = async (req, res, next) => {
         else
           res
             .status(400)
-            .json({ status: "failed", message: "No such name exists in db" });
+            .json({ status: "failed", message: "No such target exists in db" });
         // res.send(exercises);
       }, 1500);
     })
@@ -266,6 +266,45 @@ module.exports.getEquipments = async (req, res, next) => {
           name: "Equipments",
           title: "All Equipments",
         });
+      }, 1500);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: "Fail",
+        message: "Failed to load data from db",
+        error: error.message,
+      });
+      console.log(error.message);
+    });
+};
+
+module.exports.getExerciseByEquipment = async (req, res, next) => {
+  loadData()
+    .then((val) => {
+      const { equipment } = req.params;
+      const parsedData = JSON.parse(val);
+      let exercises = [];
+      // res.send(bodyPart);
+      setTimeout(() => {
+        parsedData.forEach((element) => {
+          if (element.equipment === equipment) {
+            exercises.push(element);
+          }
+        });
+      }, 1000);
+      setTimeout(() => {
+        //  rendering ejs file as a response from view folder
+        if (exercises.length !== 0)
+          res.status(200).render("pages/exercises", {
+            data: exercises,
+            title: ` Exercise for targetPart ${equipment}`,
+          });
+        else
+          res.status(400).json({
+            status: "failed",
+            message: "No such equipment exists in db",
+          });
+        // res.send(exercises);
       }, 1500);
     })
     .catch((error) => {
