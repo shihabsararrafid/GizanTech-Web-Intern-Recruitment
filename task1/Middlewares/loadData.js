@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-module.exports.loadUser = async () => {
+module.exports.loadData = async () => {
   //  console.log(path.resolve("../task1/exercise.json"));
   let data = fs.readFileSync(path.resolve("../task1/exercise.json"), "utf-8");
   //files/exercise.json

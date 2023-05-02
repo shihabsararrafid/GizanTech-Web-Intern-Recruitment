@@ -8,14 +8,14 @@
  
 
 
-<main>
-  <h1>Here is all the list of Bodyparts : </h1>
-  <div class="row gap-2">
+<main class="px-[20px]">
+  <h1 class="text-3xl mt-[5px] font-semibold">Here is all the list of Bodyparts : </h1>
+  <div class="grid grid-cols-4 gap-2">
     <%data.forEach((ex)=>{%>
-      <div class="col-3 mx-2">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%=ex%></h5>
+      <div class="shadow-lg h-[80px] hover:bg-[black] hover:text-[white] duration-300 cursor-pointer boder-black flex justify-center items-center border-[2px]">
+        <div class="card" >
+          <div class="card-body ">
+            <h5 class="card-title "><%=ex%></h5>
            
           </div>
         </div>
